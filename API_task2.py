@@ -40,8 +40,8 @@ def count_clicks(token, link):
 
 
 def is_shorten_link(url):
-    result = urlparse(url).netloc == 'vk.cc'
-    return result
+    is_short_link = urlparse(url).netloc == 'vk.cc'
+    return is_short_link
 
 
 def main():
