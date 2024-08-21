@@ -3,8 +3,6 @@ import os
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 
-load_dotenv()
-
 
 def shorten_link(token, url):
     api_url = 'https://api.vk.ru/method/utils.getShortLink'
@@ -42,14 +40,13 @@ def count_clicks(token, link):
 
 
 def is_shorten_link(url):
-    if urlparse(url).netloc == 'vk.cc':
-        return True
-    else:
-        return False
+    result = urlparse(url).netloc == 'vk.cc'
+    return result
 
 
 def main():
-    token = os.environ['TOKEN']
+    load_dotenv()
+    token = os.environ['VK_ID_ACCESS_TOKEN']
     user_url = input('Введите ссылку: ')
 
     try:
